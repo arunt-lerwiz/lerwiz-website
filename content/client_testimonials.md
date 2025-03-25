@@ -1,0 +1,20 @@
+---
+layout: "client_testimonials"
+client_testimonials:
+  - avatar: "/images/logos/profile-circle.png" 
+    title: "Working with this team was a game-changer for our business. Their website design and SEO services helped us increase our online visibility and conversions by over 200%."
+    person: "Sarah Johnson"
+    role: "CEO, TechStart"
+  - title: "Their software consulting services helped us modernize our legacy systems and implement new technologies that have significantly improved our operational efficiency."
+    avatar: "/images/logos/profile-circle.png"
+    person: "Michael Chen"
+    role: "CTO, InnovateCorp"
+  - title: "Their data entry services are exceptional. The team is accurate, efficient, and has helped us organize our data in a way that makes it much more valuable for our business decisions."
+    avatar: "/images/logos/profile-circle.png"
+    person: "Emily Rodriguez"
+    role: "Marketing Director, GrowthBrand"
+  - title: "Their data entry services are exceptional. The team is accurate, efficient, and has helped us organize our data in a way that makes it much more valuable for our business decisions."
+    avatar: "/images/logos/profile-circle.png"
+    person: "David Wilson"
+    role: "Operations Manager, DataFlow"
+---

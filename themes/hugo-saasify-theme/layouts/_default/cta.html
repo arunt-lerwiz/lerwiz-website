@@ -1,0 +1,112 @@
+{{define "main"}}
+{{ if .Site.Params.cta.enable }}
+<section class="cta-section">
+    <div class="container">
+        {{ $angle := .Site.Params.cta.gradient_angle | default 45 }}
+        {{ $from := .Site.Params.cta.gradient_from }}
+        {{ $to := .Site.Params.cta.gradient_to }}
+            <div class="relative rounded-lg overflow-hidden cta-gradient"
+             style="--gradient-angle: {{ $angle }}; --gradient-from: {{ $from }}; --gradient-to: {{ $to }}">
+            <div class="relative text-center max-w-3xl mx-auto px-6 py-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">{{ .Site.Params.cta.title }}</h2>
+                <p class="text-xl  font-bold mb-6">{{ .Site.Params.cta.description }}</p>
+                <div style="height:1px;width:100%;margin-top:1rem;margin-bottom:1rem;background-color:hsl(214,32%,91%)" aria-orientation="horizontal"></div>
+                 <p class="text-xl  mb-8">{{ .Site.Params.cta.subDescription }}</p>
+                 <div class="ctas-container overflow-hidden">
+                    <div class="ctas-track">
+                        <div class="cta-card">
+                            <img src="{{ .Site.Params.cta.contacts.emailAvatar }}" class="w-12 h-12 rounded-full cta-img">
+                            <div class="items-center space-x-4 mb-6">
+                                <div>
+                                    <h4 class="font-bold" style="font-size: 1.5rem;">{{ .Site.Params.cta.contacts.emailTitle }}</h4>
+                                    <p class="text-gray-600" style="font-size: 0.875rem;">{{ .Site.Params.cta.contacts.email }}</p>
+                                    <div style="height:1px;width:100%;margin-top:1rem;margin-bottom:1rem;background-color:hsl(214,32%,91%)" aria-orientation="horizontal"></div>
+                                    <p class="text-gray-600" style="font-size: 0.875rem;">{{ .Site.Params.cta.contacts.emailDescription }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-card">
+                            <img src="{{ .Site.Params.cta.contacts.phoneAvatar }}" class="w-12 h-12 rounded-full cta-img">
+                            <div class="items-center space-x-4 mb-6">
+                                <div>
+                                    <h4 class="font-bold" style="font-size: 1.5rem;">{{ .Site.Params.cta.contacts.phoneTitle }}</h4>
+                                    <p class="text-gray-600" style="font-size: 0.875rem;">{{ .Site.Params.cta.contacts.phone }}</p>
+                                    <div style="height:1px;width:100%;margin-top:1rem;margin-bottom:1rem;background-color:hsl(214,32%,91%)" aria-orientation="horizontal"></div>
+                                    <p class="text-gray-600" style="font-size: 0.875rem;">{{ .Site.Params.cta.contacts.phoneDescription }}</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+<style>
+.ctas-container {
+    padding: 20px 0;
+    position: relative;
+}
+
+.ctas-container.static {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    overflow: visible;
+}
+
+.ctas-track {
+    display: flex;
+    gap: 8rem;
+}
+
+.ctas-track.animate {
+    animation: 40s ctas-scroll infinite linear;
+}
+
+.cta-card {
+    flex: 0 0 auto;
+    width: 250px;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.ctas-container.static .cta-card {
+    width: 100%;
+}
+
+@keyframes ctas-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
+.ctas-container:hover .ctas-track.animate {
+    animation-play-state: paused;
+}
+
+.cta-img {
+    justify-content: center;
+    height: 6rem;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+/* Mobile-specific animation speed */
+@media (max-width: 768px) {
+    .ctas-track.animate {
+        animation: 15s ctas-scroll infinite linear;
+    }
+}
+</style>
+
+{{end}}
