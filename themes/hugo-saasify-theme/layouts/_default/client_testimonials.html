@@ -1,0 +1,119 @@
+{{define "main"}}
+{{ $background_color := .Params.background_color }}
+<section class="section{{ if not $background_color }} bg-gray-50{{ end }}" {{ if $background_color }}style="background-color:{{ $background_color }};"{{ end }}>
+    <div class="container">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">{{ .Params.title | default "Loved by Teams Worldwide" }}</h2>
+            <p class="text-xl text-gray-600">{{ .Params.description | default "See what our customers have to say about their experience with our platform." }}</p>
+        </div>
+
+        <div class="testimonials-container overflow-hidden">
+            <div class="testimonials-track{{ if ne (.Params.animate | default "true") "false" }} animate{{ end }}">
+                {{ range .Page.Params.client_testimonials }}
+                <div class="testimonial-card">
+                <div class="flex items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-yellow-400 fill-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-yellow-400 fill-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-yellow-400 fill-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-yellow-400 fill-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-yellow-400 fill-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </div>
+                <div class="flex items-center space-x-4 mb-6">
+                        <div>
+                            <p class="text-gray-600" style="font-size: 0.875rem;"><q>{{ .title }}</q></p>
+                        </div>
+                    </div>
+                    <div style="height:1px;width:100%;margin-top:1rem;margin-bottom:1rem;background-color:hsl(214,32%,91%)" aria-orientation="horizontal"></div>
+                    <div class="flex">
+                        <img src="{{ .avatar | relURL }}" alt="{{ .name }}" class="w-12 h-12 rounded-full">
+                        <div style="margin-left: 1rem">
+                            <h5>{{ .person }}</h5>
+                            <div class="text-gray-600" style="font-size: 0.875rem;">{{ .role }}</div>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+                {{ if ne (.Params.animate | default "true") "false" }}
+                    {{ range .Page.Params.testimonials }}
+                    <div class="testimonial-card">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <img src="{{ .avatar | relURL }}" alt="{{ .name }}" class="w-12 h-12 rounded-full">
+                            <div>
+                                <h4 class="font-bold">{{ .name }}</h4>
+                                <p class="text-gray-600">{{ .title }}</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">{{ .quote }}</p>
+                    </div>
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.testimonials-container {
+    padding: 20px 0;
+    position: relative;
+}
+
+.testimonials-container.static {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    overflow: visible;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 8rem;
+}
+
+.testimonials-track.animate {
+    animation: 40s testimonials-scroll infinite linear;
+}
+
+.testimonial-card {
+    flex: 0 0 auto;
+    width: 300px;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.testimonials-container.static .testimonial-card {
+    width: 100%;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.flex {
+    display: flex
+;
+}
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+@keyframes testimonials-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
+.testimonials-container:hover .testimonials-track.animate {
+    animation-play-state: paused;
+}
+
+/* Mobile-specific animation speed */
+@media (max-width: 768px) {
+    .testimonials-track.animate {
+        animation: 15s testimonials-scroll infinite linear;
+    }
+}
+</style>
+{{end}}

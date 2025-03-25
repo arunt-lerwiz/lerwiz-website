@@ -1,0 +1,111 @@
+# Basic Configuration
+baseURL = "/"
+languageCode = "en-us"
+title = "Lerwiz"
+theme = "hugo-saasify-theme"
+
+# Required Features
+pygmentsCodeFences = true  # Enable syntax highlighting
+pygmentsUseClasses = true
+enableEmoji = true        # Enable emoji support
+enableGitInfo = false      # Enable Git info for lastmod
+
+# Required Module Configuration
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.80.0"
+
+# Required Build Configuration
+[build]
+  writeStats = true      # Required for TailwindCSS
+
+# Required Markup Configuration
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = true
+    codeFences = true
+  [markup.goldmark.renderer]
+    unsafe = true       # Allow HTML in markdown
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# Theme Parameters
+[params]
+  description = "Your site description"
+  author = "Your Name"
+  logo = "/images/logo_lerwiz2.png"      # Path to your logo
+  # Google Analytics ID (e.g., "G-XXXXXXXXXX")
+  googleAnalytics = "G-XXXXXXXXXX"  # Only enabled in production
+
+  # Header Configuration
+  [params.header]
+    background = "bg-white/80 backdrop-blur-sm"
+    border = "border-b border-gray-100"
+    
+    # Header Logo
+    [params.header.logo]
+      src = "/images/logo_lerwiz2.png"
+    
+    # Header Buttons (optional)
+    [params.header.buttons]
+      #[params.header.buttons.signIn]
+        #text = "Sign in"
+        #url = "/signin"
+      [params.header.buttons.getStarted]
+        text = "Get Started"
+        url = "/get-started"
+
+  # Global CTA Configuration (optional)
+  [params.cta]
+    enable = true
+    title = "Contact Us"
+    description = "Get In Touch"
+    subDescription = "Have a question or want to work together? Reach out to us and we'll get back to you as soon as possible."
+    [params.cta.contacts]
+     emailAvatar= "/images/email.svg" 
+     emailTitle="Email Us"
+     email="info@lerwiz.com"
+     emailDescription="We'll respond within 24 hours"
+     phoneAvatar= "/images/call.svg" 
+     phoneTitle="Call Us"
+     phone="+1 (555) 123-4567"
+     phoneDescription="Mon-Fri from 9am to 6pm"
+    [params.cta.primary_button]
+      text = "Get Started →"
+      url = "/get-started"
+    [params.cta.secondary_button]
+      text = "Our Services"
+      url = "/services"
+
+  # Social Media Links (optional)
+  [params.social]
+    linkedin = "https://linkedin.com/in/yourusername"
+    twitter = "https://twitter.com/yourusername"
+    github = "https://github.com/yourusername"
+
+# Navigation Menu
+[menu]
+  [[menu.main]]
+    name = "Home"
+    weight = 1
+    url="/"
+  [[menu.main]]
+    name = "Services"
+    weight = 2
+    url = "/services"
+ [[menu.main]]
+    name = "About"
+    weight = 3
+     url = "/about"
+  [[menu.main]]
+    name = "Testimonials"
+    url = "/client_testimonials"
+    weight = 4
+  [[menu.main]]
+    name = "Contact"
+    url = "/cta"
+    weight = 5
